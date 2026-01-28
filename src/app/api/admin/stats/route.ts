@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server'
 import { getFileContent } from '@/lib/github'
-import { NavigationCategory } from '@/types/navigation'
+import { NavigationCategory, NavigationItem, NavigationData } from '@/types/navigation'
 export const runtime = 'edge'
 
 export async function GET() {
   try {
     // 动态读取最新的导航数据，而不是静态导入
-    const navigationData = await getFileContent('src/navsphere/content/navigation.json')
+    const navigationData = await getFileContent('src/navsphere/content/navigation.json') as NavigationData
     const navigationItems = navigationData.navigationItems || []
 
     // 计算一级分类数量
@@ -14,7 +14,7 @@ export async function GET() {
     console.log('Parent categories:', parentCategories)
 
     // 计算二级分类数量
-    const subCategories = navigationItems.reduce((total: number, category: any) => {
+    const subCategories = navigationItems.reduce((total: number, category: NavigationItem) => {
       return total + (category.subCategories?.length || 0)
     }, 0)
 
@@ -22,7 +22,7 @@ export async function GET() {
     const totalCategories = parentCategories + subCategories
 
     // 计算站点总数
-    const totalSites = navigationItems.reduce((total: number, category: any) => {
+    const totalSites = navigationItems.reduce((total: number, category: NavigationItem) => {
       // 一级分类的站点
       const parentSites = category.items?.length || 0
 

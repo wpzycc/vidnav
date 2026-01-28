@@ -286,7 +286,7 @@ function parseMetadataFromHtml(html: string, url: string): WebsiteMetadata {
         extractMetaContent(html, 'image')
 
     // 获取 favicon
-    let icon = extractFavicon(html, url)
+    const icon = extractFavicon(html, url)
 
     return {
         title: title.trim(),

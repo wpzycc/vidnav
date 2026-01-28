@@ -5,6 +5,7 @@ import navigationData from '@/navsphere/content/navigation.json'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/registry/new-york/ui/button'
+import { NavigationData } from '@/types/navigation'
 
 export const metadata: Metadata = {
     title: '网站投稿 - VidNav',
@@ -26,7 +27,7 @@ export default function SubmitPage() {
                 </div>
 
                 {/* 投稿表单 */}
-                <SubmissionForm navigationData={navigationData as any} />
+                <SubmissionForm navigationData={navigationData as unknown as NavigationData} />
 
                 {/* 投稿说明 */}
                 <div className="max-w-2xl mx-auto mt-8 p-6 rounded-xl bg-muted/50">

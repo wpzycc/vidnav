@@ -1,7 +1,7 @@
 import type { SiteConfig } from '@/types/site'
 import type { NavigationData, NavigationItem, NavigationSubItem } from '@/types/navigation'
 
-export function processSiteData(siteDataRaw: any): SiteConfig {
+export function processSiteData(siteDataRaw: SiteConfig): SiteConfig {
     return {
         ...siteDataRaw,
         appearance: {
@@ -21,22 +21,22 @@ export function processSiteData(siteDataRaw: any): SiteConfig {
     } as SiteConfig
 }
 
-export function filterNavigationData(navigationData: { navigationItems: any[] }): NavigationData {
+export function filterNavigationData(navigationData: NavigationData): NavigationData {
     const filteredItems = navigationData.navigationItems
         .filter(category => category.enabled !== false)
         .map(category => {
             const filteredSubCategories = category.subCategories
                 ? category.subCategories
-                    .filter((sub: any) => sub.enabled !== false)
-                    .map((sub: any) => ({
+                    .filter((sub) => sub.enabled !== false)
+                    .map((sub) => ({
                         ...sub,
-                        items: sub.items?.filter((item: any) => item.enabled !== false)
+                        items: sub.items?.filter((item) => item.enabled !== false)
                     }))
                 : undefined
 
             return {
                 ...category,
-                items: category.items?.filter((item: any) => item.enabled !== false),
+                items: category.items?.filter((item) => item.enabled !== false),
                 subCategories: filteredSubCategories
             }
         }) as NavigationItem[]
@@ -46,7 +46,7 @@ export function filterNavigationData(navigationData: { navigationItems: any[] })
     }
 }
 
-export function getProcessedData(navigationDataRaw: any, siteDataRaw: any) {
+export function getProcessedData(navigationDataRaw: NavigationData, siteDataRaw: SiteConfig) {
     const siteData = processSiteData(siteDataRaw)
     const navigationData = filterNavigationData(navigationDataRaw)
 

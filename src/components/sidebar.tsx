@@ -21,6 +21,8 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Sidebar({ className, navigationData, siteInfo, onClose }: SidebarProps) {
   const pathname = usePathname()
 
+
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
@@ -56,7 +58,7 @@ export function Sidebar({ className, navigationData, siteInfo, onClose }: Sideba
     }
 
     // Convert icon name to match Lucide icon component name
-    const IconComponent = (LucideIcons as any)[iconName] || LucideIcons.Folder;
+    const IconComponent = (LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[iconName] || LucideIcons.Folder;
     return <IconComponent className="h-4 w-4" />;
   }
 
@@ -92,7 +94,7 @@ export function Sidebar({ className, navigationData, siteInfo, onClose }: Sideba
           )}
           <span>{siteInfo.basic.title}</span>
         </Link>
-        
+
         {/* 移动模式下的关闭按钮 */}
         {onClose && (
           <Button

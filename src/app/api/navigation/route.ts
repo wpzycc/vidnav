@@ -18,7 +18,7 @@ export async function GET() {
   }
 }
 
-async function validateAndSaveNavigationData(data: any, accessToken: string) {
+async function validateAndSaveNavigationData(data: NavigationData, accessToken: string) {
   // 详细的数据结构验证和日志
   console.log('Received navigation data:', JSON.stringify(data, null, 2))
 

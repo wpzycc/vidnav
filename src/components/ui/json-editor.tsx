@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import Editor from '@monaco-editor/react'
+import Editor, { OnMount } from '@monaco-editor/react'
 import { useTheme } from 'next-themes'
 
 interface JsonEditorProps {
@@ -14,19 +14,20 @@ interface JsonEditorProps {
   stats?: { categories: number; items: number; size: number }
 }
 
-export function JsonEditor({ 
-  value, 
-  onChange, 
-  disabled = false, 
+export function JsonEditor({
+  value,
+  onChange,
+  disabled = false,
   height = '500px',
   onValidate,
   isValid = true,
   stats
 }: JsonEditorProps) {
   const { theme } = useTheme()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const editorRef = useRef<any>(null)
 
-  const handleEditorDidMount = (editor: any, monaco: any) => {
+  const handleEditorDidMount: OnMount = (editor, monaco) => {
     editorRef.current = editor
 
     // 配置JSON语言特性
@@ -71,7 +72,7 @@ export function JsonEditor({
     editor.onDidChangeModelContent(() => {
       const currentValue = editor.getValue()
       onChange(currentValue)
-      
+
       // 验证JSON格式
       if (onValidate) {
         try {
@@ -104,7 +105,7 @@ export function JsonEditor({
 
     // 格式化快捷键
     editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KeyF, () => {
-      editor.getAction('editor.action.formatDocument').run()
+      editor.getAction('editor.action.formatDocument')?.run()
     })
   }
 

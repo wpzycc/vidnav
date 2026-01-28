@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { 
+import {
   LayoutDashboard,
   Settings,
   Menu as MenuIcon,
@@ -33,7 +33,7 @@ const sidebarNavItems = [
   },
 ]
 
-interface SideNavProps extends React.HTMLAttributes<HTMLDivElement> {}
+type SideNavProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SideNav({ className, ...props }: SideNavProps) {
   const pathname = usePathname()

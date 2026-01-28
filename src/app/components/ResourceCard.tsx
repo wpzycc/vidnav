@@ -2,14 +2,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ResourceItem } from '../types/navigation'
 
-interface ResourceCardProps extends ResourceItem {}
+type ResourceCardProps = ResourceItem
 
 export default function ResourceCard({ title, description, icon, url }: ResourceCardProps) {
   return (
-    <Link 
+    <Link
       href={url}
       target="_blank"
-      rel="noopener noreferrer" 
+      rel="noopener noreferrer"
       className="card hover:shadow-lg transition-shadow"
     >
       <div className="card-content">

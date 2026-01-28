@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { SUBMISSION_LABELS, parseSubmissionFromIssueBody } from '@/types/submission'
+import { NavigationData, NavigationItem, NavigationCategory, NavigationSubItem } from '@/types/navigation'
 import fs from 'fs'
 import path from 'path'
 
@@ -68,14 +69,14 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
         if (action === 'approve') {
             // 添加到导航数据
             const navigationPath = path.join(process.cwd(), 'src/navsphere/content/navigation.json')
-            const navigationData = JSON.parse(fs.readFileSync(navigationPath, 'utf-8'))
+            const navigationData: NavigationData = JSON.parse(fs.readFileSync(navigationPath, 'utf-8'))
 
             // 查找目标分类
             const categoryId = submissionData.category
             const subcategoryId = submissionData.subcategory
 
             let targetCategory = navigationData.navigationItems.find(
-                (item: any) => item.id === categoryId || item.title === categoryId
+                (item) => item.id === categoryId || item.title === categoryId
             )
 
             if (!targetCategory) {
@@ -96,7 +97,7 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
             // 如果有子分类，添加到子分类
             if (subcategoryId && targetCategory.subCategories) {
                 const targetSubCategory = targetCategory.subCategories.find(
-                    (sub: any) => sub.id === subcategoryId || sub.title === subcategoryId
+                    (sub) => sub.id === subcategoryId || sub.title === subcategoryId
                 )
                 if (targetSubCategory) {
                     if (!targetSubCategory.items) {
@@ -179,6 +180,7 @@ async function updateIssueLabels(issueNumber: string, addLabel: string, removeLa
     )
 
     const issue = await issueResponse.json()
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const currentLabels = issue.labels.map((l: any) => l.name)
 
     // 移除旧标签，添加新标签

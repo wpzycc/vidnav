@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { commitFile, getFileContent } from '@/lib/github'
-import type { NavigationItem } from '@/types/navigation'
+import type { NavigationItem, NavigationData } from '@/types/navigation'
 
 export const runtime = 'edge'
 
@@ -19,7 +19,7 @@ export async function GET() {
     }
 }
 
-async function validateAndSaveVideosData(data: any, accessToken: string) {
+async function validateAndSaveVideosData(data: NavigationData, accessToken: string) {
     if (!data || typeof data !== 'object') {
         throw new Error('Invalid videos data: not an object')
     }

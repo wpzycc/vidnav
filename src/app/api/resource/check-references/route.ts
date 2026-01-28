@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { getFileContent } from '@/lib/github'
 import type { NavigationData } from '@/types/navigation'
+import type { SiteConfig } from '@/types/site'
 
 export const runtime = 'edge'
 
@@ -16,7 +17,7 @@ export async function POST(request: Request) {
     const navigationData = await getFileContent('src/navsphere/content/navigation.json') as NavigationData
 
     // 获取站点配置数据
-    const siteData = await getFileContent('src/navsphere/content/site.json') as any
+    const siteData = await getFileContent('src/navsphere/content/site.json') as SiteConfig
 
     const references: Record<string, Array<{ type: string; location: string; title?: string }>> = {}
 

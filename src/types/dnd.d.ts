@@ -4,10 +4,10 @@ declare module '@hello-pangea/dnd' {
   export interface DraggableProvided {
     draggableProps: {
       style?: React.CSSProperties
-      [key: string]: any
+      [key: string]: unknown
     }
     dragHandleProps: {
-      [key: string]: any
+      [key: string]: unknown
     } | null
     innerRef: (element?: HTMLElement | null) => void
   }
@@ -16,7 +16,7 @@ declare module '@hello-pangea/dnd' {
     innerRef: (element?: HTMLElement | null) => void
     placeholder?: ReactNode
     droppableProps: {
-      [key: string]: any
+      [key: string]: unknown
     }
   }
 
@@ -79,7 +79,7 @@ declare module '@hello-pangea/dnd' {
     isCombineEnabled?: boolean
     direction?: 'vertical' | 'horizontal'
     ignoreContainerClipping?: boolean
-    renderClone?: any
+    renderClone?: (provided: DraggableProvided, snapshot: DraggableStateSnapshot, rubric: DraggableRubric) => ReactNode
     getContainerForClone?: () => HTMLElement
     children: (provided: DroppableProvided, snapshot: DroppableStateSnapshot) => ReactNode
   }
