@@ -5,6 +5,10 @@
 </p>
 
 <p align="center">
+  <strong>简体中文</strong> | <a href="./README-EN.md">English</a>
+</p>
+
+<p align="center">
   <a href="https://github.com/tianyaxiang/vidnav/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/tianyaxiang/vidnav?style=flat-square"></a>
   <a href="https://github.com/tianyaxiang/vidnav/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/tianyaxiang/vidnav?style=flat-square"></a>
   <a href="https://github.com/tianyaxiang/vidnav/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/tianyaxiang/vidnav?style=flat-square"></a>
