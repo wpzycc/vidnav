@@ -274,7 +274,7 @@ export default function ResourceManagement() {
       xhr.open("POST", "/api/resource", true);
       xhr.setRequestHeader("Content-Type", "application/json");
 
-      let startTime = Date.now();
+      const startTime = Date.now();
 
       xhr.upload.onprogress = (event) => {
         if (event.lengthComputable) {
