@@ -32,6 +32,15 @@
         }
       ],
       "subCategories": []
+    },
+    {
+      "id": "1769594403680",
+      "title": "七年级",
+      "icon": "PlayCircle",
+      "description": "",
+      "enabled": true,
+      "items": [],
+      "subCategories": []
     }
   ]
 }
