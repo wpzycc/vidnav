@@ -15,9 +15,9 @@ pages_build_output_dir = ".vercel/output/static"
 # Build configuration is handled by Cloudflare Pages dashboard or CLI
 # Environment variables should be set in the dashboard Settings > Environment variables
 [env.production.vars]
-GITHUB_CLIENT_ID = "Ov23liZBRHtzydQyiSV5"
-GITHUB_OWNER = "tianyaxiang"
+GITHUB_CLIENT_ID = "Ov23liK5fCEuJefVswb5"
+GITHUB_OWNER = "wpzycc"
 GITHUB_REPO = "vidnav"
 GITHUB_BRANCH = "main"
-NEXTAUTH_URL = "https://vid.newkit.site/api/auth"
-NEXT_PUBLIC_API_URL="https://vid.newkit.site"
+NEXTAUTH_URL = "https://vidnav-11i.pages.dev/api/auth"
+NEXT_PUBLIC_API_URL="https://vidnav-11i.pages.dev"
